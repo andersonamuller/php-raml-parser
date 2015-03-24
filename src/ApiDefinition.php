@@ -205,8 +205,10 @@ class ApiDefinition implements ArrayInstantiationInterface
         }
 
         if (isset($data['securitySchemes'])) {
-            foreach ($data['securitySchemes'] as $name => $securityScheme) {
-                $apiDefinition->addSecurityScheme(SecurityScheme::createFromArray($name, $securityScheme));
+            foreach ($data['securitySchemes'] as $securitySchemes) {
+                foreach ($securitySchemes as $name => $securityScheme) {
+                    $apiDefinition->addSecurityScheme(SecurityScheme::createFromArray($name, $securityScheme));
+                }
             }
         }
 
